@@ -1,0 +1,25 @@
+<View>
+  <View style="padding: 8px 12px; border-radius: 6px; background: #f4f6fb; border: 1px solid #d9dfeb; margin-bottom: 8px;">
+    <Header value="Hypothese: Migration nach Deutschland soll reduziert oder restriktiver gehandhabt werden." size="5"/>
+  </View>
+
+  <Text name="text" value="$text"/>
+
+  <Header value="1. Haltung zur Hypothese" size="5"/>
+  <Choices name="stance_3" toName="text" choice="single-radio" required="true" showInline="true">
+    <Choice value="pro" hotkey="1"
+            hint="Zustimmung zur Begrenzung oder restriktiveren Handhabung."/>
+    <Choice value="contra" hotkey="2"
+            hint="Ablehnung der Begrenzung oder Befürwortung einer offeneren Handhabung."/>
+    <Choice value="neutral" hotkey="3"
+            hint="Keine eindeutige Haltung erkennbar."/>
+  </Choices>
+
+  <Header value="2. Ton" size="5"/>
+  <Choices name="tone" toName="text" choice="single-radio" required="true" showInline="true">
+    <Choice value="positiv" hotkey="4"/>
+    <Choice value="negativ" hotkey="5"/>
+    <Choice value="neutral" hotkey="6"/>
+    <Choice value="gemischt" hotkey="7"/>
+  </Choices>
+</View>

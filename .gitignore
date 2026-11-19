@@ -1,0 +1,15 @@
+# Environments
+.venv*/
+__pycache__/
+.claude/
+
+# Secrets and Label Studio internals
+.env
+*.sqlite3
+data/labelstudio_batches/media/
+
+# Private validation key
+PRIVATE_key.csv
+
+# Raw source data (too large, publicly available)
+data/raw/germaparl2-plus_lp_subsets/

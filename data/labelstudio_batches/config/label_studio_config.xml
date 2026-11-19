@@ -1,0 +1,61 @@
+<View>
+
+  <View style="padding: 8px 12px; border-radius: 6px; background: #f4f6fb; border: 1px solid #d9dfeb; margin-bottom: 8px;">
+    <Header value="Hypothese: Migration nach Deutschland soll reduziert oder restriktiver gehandhabt werden." size="5"/>
+  </View>
+
+  <Header value="$date" size="6"/>
+  <Text name="text" value="$text"/>
+
+  <Header value="1. Relevant?" size="5"/>
+  <Choices name="topic_relevance" toName="text" choice="single-radio" required="true" showInline="true">
+    <Choice value="Relevant" hotkey="1"/>
+    <Choice value="Nicht relevant" hotkey="2" hint="Kein Bezug dazu, wer nach Deutschland kommen oder bleiben darf (z. B. Keyword-Fehltreffer, reine Integrationsthemen, Krisen im Ausland)."/>
+  </Choices>
+
+  <View visibleWhen="choice-selected" whenTagName="topic_relevance" whenChoiceValue="Relevant">
+
+    <Header value="2. Bereich" size="5"/>
+    <Choices name="domain" toName="text" choice="single-radio" showInline="true">
+      <Choice value="Asyl/Flucht" alias="asyl" hotkey="z"/>
+      <Choice value="Arbeitsmigration" alias="arbeit" hotkey="x"/>
+      <Choice value="Allgemein/anderes" alias="allgemein" hotkey="c"/>
+    </Choices>
+
+    <Header value="3. Haltung" size="5"/>
+    <Choices name="stance" toName="text" choice="single-radio" showInline="true">
+      <Choice value="Pro: allgemein" alias="pro_allgemein" hotkey="3" hint="Fordert insgesamt weniger bzw. begrenzte Zuwanderung (z. B. 'Zuwanderung muss begrenzt werden', Obergrenze, 'Aufnahmekapazität erschöpft')."/>
+      <Choice value="Pro: Maßnahme" alias="pro_massnahme" hotkey="4" hint="Unterstützt eine konkrete begrenzende Maßnahme (z. B. sichere Herkunftsstaaten, Abschiebungen, Grenzkontrollen) oder lehnt eine öffnende ab, ohne Aussage zur Gesamtzahl."/>
+      <Choice value="Neutral/unklar" alias="neutral" hotkey="5" hint="Keine erkennbare Richtung im Text selbst."/>
+      <Choice value="Contra: Maßnahme" alias="contra_massnahme" hotkey="6" hint="Unterstützt eine konkrete öffnende Maßnahme (z. B. Arbeitsmarktzugang, Bleiberecht, Aufnahmeprogramm) oder lehnt eine begrenzende ab, ohne Aussage zur Gesamtzahl."/>
+      <Choice value="Contra: allgemein" alias="contra_allgemein" hotkey="7" hint="Fordert insgesamt mehr bzw. leichtere Zuwanderung (z. B. 'Wir müssen mehr aufnehmen', 'Wir brauchen mehr Einwanderung')."/>
+    </Choices>
+
+    <Header value="4. Ton" size="5"/>
+    <Choices name="tone" toName="text" choice="single-radio" showInline="true">
+      <Choice value="Positiv" alias="positiv" hotkey="9"/>
+      <Choice value="Negativ" alias="negativ" hotkey="0"/>
+      <Choice value="Neutral" alias="neutral" hotkey="q"/>
+      <Choice value="Gemischt" alias="gemischt" hotkey="w"/>
+    </Choices>
+
+    <Header value="5. Ton richtet sich an" size="5"/>
+    <Choices name="target" toName="text" choice="single-radio" showInline="true">
+      <Choice value="Migrant:innen" alias="migranten" hotkey="e"/>
+      <Choice value="Politik/Gegner" alias="politik" hotkey="t"/>
+      <Choice value="Maßnahme/Gesetz" alias="massnahme" hotkey="a"/>
+      <Choice value="Lage" alias="lage" hotkey="s"/>
+      <Choice value="Kein Fokus" alias="kein_fokus" hotkey="d"/>
+    </Choices>
+
+  </View>
+
+  <Header value="6. Sicher?" size="5"/>
+  <Choices name="confidence" toName="text" choice="single-radio" required="true" showInline="true">
+    <Choice value="Sicher" alias="sicher" hotkey="f"/>
+    <Choice value="Unsicher" alias="unsicher" hotkey="g"/>
+  </Choices>
+
+  <TextArea name="annotator_notes" toName="text" rows="1" maxSubmissions="1" placeholder="Notiz (optional)"/>
+
+</View>
