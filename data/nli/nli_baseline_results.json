@@ -1,0 +1,66 @@
+{
+  "model": "MoritzLaurer/mDeBERTa-v3-base-mnli-xnli",
+  "test_samples": 200,
+  "labels": [
+    "entailment",
+    "neutral",
+    "contradiction"
+  ],
+  "classification_report": {
+    "entailment": {
+      "precision": 0.6956521739130435,
+      "recall": 0.21333333333333335,
+      "f1-score": 0.32653061224489793,
+      "support": 75.0
+    },
+    "neutral": {
+      "precision": 0.2808219178082192,
+      "recall": 0.82,
+      "f1-score": 0.41836734693877553,
+      "support": 50.0
+    },
+    "contradiction": {
+      "precision": 0.5483870967741935,
+      "recall": 0.22666666666666666,
+      "f1-score": 0.32075471698113206,
+      "support": 75.0
+    },
+    "accuracy": 0.37,
+    "macro avg": {
+      "precision": 0.5082870628318187,
+      "recall": 0.41999999999999993,
+      "f1-score": 0.3552175587216018,
+      "support": 200.0
+    },
+    "weighted avg": {
+      "precision": 0.5367202059597687,
+      "recall": 0.37,
+      "f1-score": 0.34732383519445514,
+      "support": 200.0
+    }
+  },
+  "confusion_matrix": {
+    "labels": [
+      "entailment",
+      "neutral",
+      "contradiction"
+    ],
+    "matrix": [
+      [
+        16,
+        53,
+        6
+      ],
+      [
+        1,
+        41,
+        8
+      ],
+      [
+        6,
+        52,
+        17
+      ]
+    ]
+  }
+}

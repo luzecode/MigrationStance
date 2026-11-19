@@ -1,0 +1,38 @@
+{
+  "hypothesis": "Migration nach Deutschland soll reduziert oder restriktiver gehandhabt werden.",
+  "label_mapping": {
+    "pro": "entailment",
+    "neutral": "neutral",
+    "contra": "contradiction"
+  },
+  "baseline_model": "MoritzLaurer/mDeBERTa-v3-base-mnli-xnli",
+  "seed": 20261105,
+  "counts": {
+    "all": 4514,
+    "train": 3882,
+    "dev": 432,
+    "test_validation": 200
+  },
+  "label_counts": {
+    "neutral": 1711,
+    "entailment": 1623,
+    "contradiction": 1180
+  },
+  "split_label_counts": {
+    "dev": {
+      "neutral": 166,
+      "entailment": 155,
+      "contradiction": 111
+    },
+    "test": {
+      "contradiction": 75,
+      "entailment": 75,
+      "neutral": 50
+    },
+    "train": {
+      "neutral": 1495,
+      "entailment": 1393,
+      "contradiction": 994
+    }
+  }
+}
