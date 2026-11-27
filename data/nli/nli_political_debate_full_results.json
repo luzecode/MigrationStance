@@ -1,0 +1,52 @@
+{
+  "model": "mlburnham/Political_DEBATE_large_v1.0",
+  "samples": 4514,
+  "device": "cuda",
+  "labels": [
+    "entailment",
+    "not_entailment"
+  ],
+  "classification_report": {
+    "entailment": {
+      "precision": 0.571945701357466,
+      "recall": 0.7788046826863833,
+      "f1-score": 0.6595356117923298,
+      "support": 1623.0
+    },
+    "not_entailment": {
+      "precision": 0.8441840277777778,
+      "recall": 0.6727775856105154,
+      "f1-score": 0.7487969201154957,
+      "support": 2891.0
+    },
+    "accuracy": 0.7108994240141782,
+    "macro avg": {
+      "precision": 0.708064864567622,
+      "recall": 0.7257911341484493,
+      "f1-score": 0.7041662659539127,
+      "support": 4514.0
+    },
+    "weighted avg": {
+      "precision": 0.7463012622084011,
+      "recall": 0.7108994240141782,
+      "f1-score": 0.716703188744539,
+      "support": 4514.0
+    }
+  },
+  "confusion_matrix": {
+    "labels": [
+      "entailment",
+      "not_entailment"
+    ],
+    "matrix": [
+      [
+        1264,
+        359
+      ],
+      [
+        946,
+        1945
+      ]
+    ]
+  }
+}

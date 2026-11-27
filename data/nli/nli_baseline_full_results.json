@@ -1,0 +1,67 @@
+{
+  "model": "MoritzLaurer/mDeBERTa-v3-base-mnli-xnli",
+  "samples": 4514,
+  "device": "cuda",
+  "labels": [
+    "entailment",
+    "neutral",
+    "contradiction"
+  ],
+  "classification_report": {
+    "entailment": {
+      "precision": 0.6290322580645161,
+      "recall": 0.16820702402957485,
+      "f1-score": 0.2654350996596986,
+      "support": 1623.0
+    },
+    "neutral": {
+      "precision": 0.4187958883994126,
+      "recall": 0.8334307422559907,
+      "f1-score": 0.5574667709147771,
+      "support": 1711.0
+    },
+    "contradiction": {
+      "precision": 0.39111111111111113,
+      "recall": 0.22372881355932203,
+      "f1-score": 0.2846361185983827,
+      "support": 1180.0
+    },
+    "accuracy": 0.43486929552503323,
+    "macro avg": {
+      "precision": 0.47964641919168,
+      "recall": 0.40845552661496254,
+      "f1-score": 0.3691793297242862,
+      "support": 4514.0
+    },
+    "weighted avg": {
+      "precision": 0.48714892135605137,
+      "recall": 0.43486929552503323,
+      "f1-score": 0.381146972026798,
+      "support": 4514.0
+    }
+  },
+  "confusion_matrix": {
+    "labels": [
+      "entailment",
+      "neutral",
+      "contradiction"
+    ],
+    "matrix": [
+      [
+        273,
+        1144,
+        206
+      ],
+      [
+        80,
+        1426,
+        205
+      ],
+      [
+        81,
+        835,
+        264
+      ]
+    ]
+  }
+}

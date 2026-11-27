@@ -1,11 +1,12 @@
-"""Evaluate an untuned generic NLI model on the stance test set.
+r"""Evaluate an untuned generic NLI model on the stance dataset.
 
-to run the baseline on the whoel dataset:
+To run the baseline on the whole dataset using CUDA:
 
 .\.venv-labelstudio\Scripts\python.exe .\src\NLI-Models\02_evaluate_nli_baseline.py `
   --input ".\data\nli\nli_dataset.csv" `
   --output ".\data\nli\nli_baseline_full_results.json" `
-  --predictions ".\data\nli\nli_baseline_full_predictions.csv"
+  --predictions ".\data\nli\nli_baseline_full_predictions.csv" `
+  --device cuda
 """
 
 import json
@@ -61,6 +62,12 @@ def main():
         default=DATA / "nli_baseline_predictions.csv",
         help="Path for row-level predictions.",
     )
+    parser.add_argument(
+        "--device",
+        choices=("auto", "cuda", "cpu"),
+        default="auto",
+        help="Inference device (default: use CUDA when available).",
+    )
     args = parser.parse_args()
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
@@ -69,6 +76,14 @@ def main():
     np.random.seed(SEED)
     torch.manual_seed(SEED)
 
+    if args.device == "cuda" and not torch.cuda.is_available():
+        raise RuntimeError("CUDA was requested but is not available in this PyTorch installation.")
+    device = torch.device(
+        "cuda" if args.device == "cuda" or (args.device == "auto" and torch.cuda.is_available())
+        else "cpu"
+    )
+    print(f"Using device: {device}")
+
     test = pd.read_csv(args.input)
     required = {"premise", "hypothesis", "nli_label"}
     missing = required.difference(test.columns)
@@ -76,7 +91,7 @@ def main():
         raise KeyError(f"Missing required columns in {args.input}: {sorted(missing)}")
 
     tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
-    model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME)
+    model = AutoModelForSequenceClassification.from_pretrained(MODEL_NAME).to(device)
     model.eval()
 
     predictions = []
@@ -89,7 +104,7 @@ def main():
             truncation=True,
             max_length=512,
             return_tensors="pt",
-        )
+        ).to(device)
         with torch.no_grad():
             logits = model(**encoded).logits
         predictions.extend(logits.argmax(dim=-1).cpu().tolist())
@@ -116,7 +131,8 @@ def main():
 
     results = {
         "model": MODEL_NAME,
-        "test_samples": len(test),
+        "samples": len(test),
+        "device": str(device),
         "labels": list(LABELS),
         "classification_report": report,
         "confusion_matrix": {
